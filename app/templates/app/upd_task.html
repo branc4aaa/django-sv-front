@@ -1,0 +1,12 @@
+{% extends "app/index.html" %}
+{% block title %}{{task_id}}{% endblock %}
+{% block content %}
+    <div class="container mt-4">
+        <h2>Update Task</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Update Task</button>
+        </form>
+    </div>
+{% endblock %}

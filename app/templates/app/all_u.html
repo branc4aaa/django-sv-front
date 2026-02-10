@@ -1,0 +1,31 @@
+{% extends "app/index.html" %}
+{% block title %}List of users{% endblock %}
+{% block content %}
+    {% if request.session.access %}
+        <div class="container mt-4">
+            <h1>List of Users</h1>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                    <tr>
+                        <td>{{ user.id }}</td>
+                        <td>{{ user.username }}</td>
+                        <td>{{ user.email }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <div class="container mt-4">
+            <h2>Please <a href="{% url 'login' %}">login</a> to view the list of users.</h2>
+        </div>
+    {% endif %}
+{% endblock %}

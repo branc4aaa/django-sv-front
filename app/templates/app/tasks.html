@@ -1,0 +1,28 @@
+{% extends "app/index.html" %}
+{% block title %}All Tasks{% endblock %}
+{% block username %}{{ user }}{% endblock %}
+{% block content %}
+{% for task in tasks%}
+    <div class="card mb-3">
+        <div class="card-body">
+            <p class="card-text">Task ID: {{ task.id }}</p>
+            <h5 class="card-title">{{ task.title }}</h5>
+            <p class="card-text">{{ task.description }}</p>
+            <p class="card-text">
+                <small class="text-muted">
+                    Status:
+                    {% if task.completed %}
+                        ✅ Done
+                    {% else %}
+                        ⏳ Pending
+                    {% endif %}
+                </small>
+            </p>
+
+            <a href="{% url 'delete_task' task.id %}" class="btn btn-danger">Delete</a>
+            <a href="{% url 'upd_task' task.id %}" class="btn btn-primary">Edit</a>
+        </div>
+    </div>
+{% endfor %}
+<a href="{% url 'newTask' %}" class="btn btn-primary">Create New Task</a>
+{% endblock %}

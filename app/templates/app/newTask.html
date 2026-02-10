@@ -1,0 +1,19 @@
+{% extends "app/index.html" %}
+{% block title %}New Task{% endblock %}
+{% block username %}{{ user }}{% endblock %}
+{% block content %}
+{% if request.session.access %}
+    <div class="container mt-4">
+        <h2>Create New Task</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Create Task</button>
+        </form>
+    </div>
+{% else %}
+    <div class="container mt-4">
+        <h2>Please <a href="{% url 'login' %}">login</a> to create a new task.</h2>
+    </div>
+{% endif %}
+{% endblock %}
