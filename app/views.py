@@ -1,11 +1,14 @@
 from django.shortcuts import render, redirect
 import requests 
 from .forms import LoginForm, RegisterForm, NewTaskForm
+import os
+from dotenv import load_dotenv
 
+load_dotenv()
 # Create your views here.
 
-API_URL = "http://127.0.0.1:9001"
-API_TASKS = "http://127.0.0.1:9000/tasks/"
+API_URL = os.getenv("API_URL")
+API_TASKS = os.getenv("API_TASKS")
 
 def home(request):
     session = request.session.items()
