@@ -54,7 +54,7 @@ def login_view(request):
 
                 data = response.json()
 
-                request.session["user_id"] = data["user_id"]
+                
                 request.session["access"] = data["access_token"]                
                 request.session["refresh"] = data["refresh_token"]
 
@@ -83,7 +83,7 @@ def register_view(request):
             
                 response = requests.post(f"{API_URL}/auth/register", json={'name': name, 'email': email, 'password': password})
             
-                if response.status_code == 201:
+                if response.status_code in (200, 201):
             
                     return render(request, 'app/register_success.html', {'message': 'Registration successful!'})
             

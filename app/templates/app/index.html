@@ -21,7 +21,7 @@
                     <a class="nav-link" href="{% url 'tasks'%}">Tasks</a>
                     <a class="nav-link" href="{% url 'all_u'%}">Users</a>
                     {% if request.session.access %}
-                        <a class="btn btn-primary" href="#">{% block username %}{{ user.name }}{% endblock %}</a>
+                        <a class="btn btn-primary" href="#">{{ user_name }}</a>
                         <a class="btn btn-primary" href="{% url 'logout'%}">Logout</a>
                     {% else %}
                         <a class="btn btn-primary" href="{% url 'login'%}">Login</a>
