@@ -53,10 +53,10 @@ def login_view(request):
             if response.status_code == 200:
 
                 data = response.json()
-                print("DATA:", data)
-                print("req:",request.session)
-
                 
+
+                request.session["user_id"] = data["user_id"]
+                print("USER_ID:", request.session.get("user_id"))
                 request.session["access"] = data["access_token"]                
                 request.session["refresh"] = data["refresh_token"]
                 
