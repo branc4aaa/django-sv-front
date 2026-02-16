@@ -24,5 +24,9 @@
         </div>
     </div>
 {% endfor %}
-<a href="{% url 'newTask' %}" class="btn btn-primary">Create New Task</a>
+{% if request.session.access %}
+    <a href="{% url 'newTask' %}" class="btn btn-primary">Create New Task</a>
+{% else %}
+    <p class="text-muted">Please log in to create new tasks.</p>
+{% endif %}
 {% endblock %}
