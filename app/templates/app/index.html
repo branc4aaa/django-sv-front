@@ -32,6 +32,17 @@
         </div>
     </nav>
     {% block content %}
+    {% if request.session.access %}
+        <div class="container mt-4">
+            <h1>Welcome, {{ user_name }}!</h1>
+            <p>You are logged in. Explore your tasks and manage them efficiently.</p>
+        </div>
+    {% else %}
+        <div class="container mt-4">
+            <h1>Welcome to Mix Task Manager!</h1>
+            <p>Please log in or register to manage your tasks effectively.</p>
+        </div>
+    {% endif %}
     {% endblock %}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 
